@@ -67,9 +67,10 @@ public class BallManager : MonoBehaviour
         Instantiate(Resources.Load("Red",typeof(GameObject)));
     }
 
-    public void CreateYellowBall(Vector3 position)
+    public void CreateYellowBall(Vector3 position, BlueBall blueBall)
     {
         GameObject yellowBall =Instantiate(Resources.Load("Yellow",typeof(GameObject)),position,Quaternion.identity) as GameObject;
+        yellowBall.GetComponent<Yellow>().Constract(blueBall);
         YellowBalls.Add(yellowBall);
         YellowBallsPosition.Add(yellowBall.transform.position);
     }

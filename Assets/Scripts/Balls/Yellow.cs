@@ -8,7 +8,13 @@ namespace Balls
     {
         private LineRenderer _line;
         private BallManager BallManager;
+        private BlueBall _blueBall;
 
+        public void Constract(BlueBall blueBall)
+        {
+            _blueBall = blueBall;
+        }
+        
         private void Awake()
         {
             _line = GetComponent<LineRenderer>();
@@ -33,12 +39,15 @@ namespace Balls
                 }
                 else
                 {
-                    _line.SetVertexCount(BallManager.YellowBallsPosition.Count);
-                    _line.SetPosition(BallManager.YellowBallsPosition.Count - 1, (Vector3)BallManager.YellowBallsPosition [BallManager.YellowBallsPosition.Count - 1]);
+                    yellowBall.GetComponent<Yellow>()._blueBall.destroy();
+                    Destroy(yellowBall);
+                    //_line.SetVertexCount(BallManager.YellowBallsPosition.Count);
+                    //_line.SetPosition(BallManager.YellowBallsPosition.Count - 1, (Vector3)BallManager.YellowBallsPosition [BallManager.YellowBallsPosition.Count - 1]);
 
                 }
-                
             }
+            BallManager.YellowBalls.Clear();
+            BallManager.YellowBallsPosition.Clear();
         }
     }
 }
